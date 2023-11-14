@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
-import Listagem from './componentes/Listagem.js';
+import Listagem from './components/Listagem.js';
+import Cadastro from './components/cadastro/cadastro.js'
 
 const styles = {
   backgroundColor: 'black',
@@ -10,7 +11,8 @@ const styles = {
 function App() {
   return (
     <div className="App" style={styles}>
-      <Listagem />
+      <Cadastro />
+      {/* <Listagem /> */}
     </div>
   );
 }
