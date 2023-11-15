@@ -1,40 +1,32 @@
 import Name from "./name/name";
+
 import "./styles.css";
+import Evento from "./botao/botao";
 
 const Cadastro = () => {
-return (<div className = "caixaCadastro"> Cadastre seu TCC
-<Name
-    title = "Nome do TCC"
-    info = "Circuitos Elétricos e suas aplicações em segurança"
-/>
-<Name
-    title = "Autor"
-    info = "Juliana Sartori"
-/>
-<Name
-    title = "Orientador"
-    info = "Elder"
-/>
-<Name
-    title = "Curso"
-    info = "Engenharia da Computação"
-/>
-<Name
-    title = "Status"
-    info = "Em andamento"
-/>
-<Name
-    title = "Palavras-Chave"
-    info = "circuitos eletricos, física"
-/>
-<Name
-    title = "Link do TCC"
-/>
-<a href="https://www2.ufjf.br/mecanica//files/2016/07/UFJF_2017_-TCC_Eduardo-Rezende-Pires.pdf" >
-        Link
-      </a>
-</div>);
-};
+  console.log("Usuário Cadastrado!");
 
+  return (
+    <div className="caixaCadastro">
+      <p>
+        Cadastre seu Trabalho Acadêmico <Evento click="Listagem" />
+      </p>
+
+      <Name
+        title="Nome do Trabalho Acadêmico"
+        info="Circuitos Elétricos e suas aplicações em segurança"
+      />
+      <Name title="Autor" />
+      <Name title="Orientador" />
+      <Name title="Curso" />
+      <Name title="Status" />
+      <Name title="Palavras-Chave" />
+      <Name title="Link do Trabalho Acadêmico" />
+      <h6>
+        <Evento click="Enviar" />
+      </h6>
+    </div>
+  );
+};
 
 export default Cadastro;

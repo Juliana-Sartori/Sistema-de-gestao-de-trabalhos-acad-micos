@@ -1,0 +1,9 @@
+.botao button {
+  display: flex;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 200;
+  font-size: 20px;
+  background-color: #eff3fa;
+  border-radius: 5px;
+}
