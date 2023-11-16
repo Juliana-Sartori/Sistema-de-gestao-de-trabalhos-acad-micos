@@ -1,6 +1,6 @@
 import logo from "./logo.svg";
 import "./App.css";
-import Listagem from "./components/Listagem.js";
+import Listagem from "./components/listagem/Listagem.js";
 import Cadastro from "./components/cadastro/cadastro.js";
 
 // const styles = {
