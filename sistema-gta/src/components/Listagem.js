@@ -231,7 +231,7 @@ const OverviewTela = ({ arrayDeObjetos, itensPorPagina }) => {
   }
 
   return (
-    <div className="container" style={styles.container}>
+    <div  style={styles.container}>
       <h1 style={styles.title}>Visão Geral</h1>
       <div className="cards-container" style={styles.cardContainer}>
         {objetosNaPagina.map((objeto, index) => (
@@ -306,10 +306,10 @@ function Listagem() {
 
   const arrayDeObjetos = vet;
 
-  const itensPorPagina = 6;
+  const itensPorPagina = 4;
 
   return (
-    <div>
+    <div style={styles.container}>
       <OverviewTela arrayDeObjetos={arrayDeObjetos} itensPorPagina={itensPorPagina} />
     </div>
   );
