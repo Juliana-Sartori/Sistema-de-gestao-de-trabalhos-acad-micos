@@ -204,7 +204,10 @@ const ObjetoCard = ({ objeto }) => {
       <p style={styles.text}>Autor: {objeto.autor}</p>
       <p style={styles.text}>Orientador: {objeto.orientador}</p>
       <p style={styles.text}>Curso: {objeto.curso}</p>
+      <p style={styles.text}>Data de Início: {objeto.periodoDeExecucao.inicio.toLocaleDateString()}</p>
+      <p style={styles.text}>Data de Encerramento: {objeto.periodoDeExecucao.fim.toLocaleDateString()}</p>
       <p style={styles.text}>Status: {objeto.status}</p>
+      <p style={styles.text}>Tipo: {objeto.tipo}</p>
       <p style={styles.text}>Palavras-Chave: {objeto.palavras_chaves.join(', ')}</p>
       <p style={styles.text}> <a href={objeto.conteudo.url} target='_blank'>Link</a></p>
     </div>
@@ -266,7 +269,7 @@ const styles = {
     padding: '16px',
     margin: '16px',
     width: '300px',
-    height: '400px',
+    height: '450px',
     backgroundColor: '#c8d5ec',
     boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   },
