@@ -4,6 +4,21 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const vet = [
   {
+    autor: "Juliana Oliveira",
+    orientador: "Professor de Biologia",
+    titulo: "Impacto Ambiental",
+    periodoDeExecucao: {
+      inicio: new Date(2022, 2, 1),
+      fim: new Date(2022, 8, 31),
+    },
+    palavras_chaves: ["biologia", "meio ambiente", "sustentabilidade"],
+    curso: "Biologia",
+    tipo: "Tese",
+    status: "Concluído",
+    conteudo: {
+      url: "https://www.worldwildlife.org/",
+    },
+  }, {
     autor: "Fulano de Tal",
     orientador: "Professor de tal Matéria",
     titulo: "Uma Coisa Muito Chata",
@@ -25,7 +40,7 @@ const vet = [
     titulo: "Uma Coisa Interessante",
     periodoDeExecucao: {
       inicio: new Date(2022, 7, 1),
-      fim: new Date(2022, 11, 31),
+      fim: new Date(2024, 11, 31),
     },
     palavras_chaves: ["palavra 4", "palavra 5", "palavra 6"],
     curso: "Outro Curso Legal",
@@ -41,7 +56,7 @@ const vet = [
     titulo: "Descobertas Científicas",
     periodoDeExecucao: {
       inicio: new Date(2022, 2, 15),
-      fim: new Date(2022, 8, 30),
+      fim: new Date(2025, 8, 30),
     },
     palavras_chaves: ["descoberta", "ciência", "inovação"],
     curso: "Ciências Naturais",
@@ -57,7 +72,7 @@ const vet = [
     titulo: "História Contemporânea",
     periodoDeExecucao: {
       inicio: new Date(2022, 4, 1),
-      fim: new Date(2022, 11, 31),
+      fim: new Date(2023, 11, 31),
     },
     palavras_chaves: ["história", "contemporânea", "sociedade"],
     curso: "História",
@@ -89,7 +104,7 @@ const vet = [
     titulo: "Análise Literária",
     periodoDeExecucao: {
       inicio: new Date(2022, 1, 1),
-      fim: new Date(2022, 6, 30),
+      fim: new Date(2024, 6, 30),
     },
     palavras_chaves: ["literatura", "análise", "escritores"],
     curso: "Letras",
@@ -105,7 +120,7 @@ const vet = [
     titulo: "Teoria dos Números",
     periodoDeExecucao: {
       inicio: new Date(2022, 3, 1),
-      fim: new Date(2022, 9, 30),
+      fim: new Date(2024, 9, 30),
     },
     palavras_chaves: ["matemática", "teoria dos números", "números primos"],
     curso: "Matemática",
@@ -121,7 +136,7 @@ const vet = [
     titulo: "Desenvolvimento Web Moderno",
     periodoDeExecucao: {
       inicio: new Date(2022, 5, 1),
-      fim: new Date(2022, 11, 31),
+      fim: new Date(2024, 11, 31),
     },
     palavras_chaves: ["desenvolvimento web", "front-end", "back-end"],
     curso: "Ciência da Computação",
@@ -153,7 +168,7 @@ const vet = [
     titulo: "Avanços em Química Orgânica",
     periodoDeExecucao: {
       inicio: new Date(2022, 1, 1),
-      fim: new Date(2022, 7, 31),
+      fim: new Date(2023, 11, 31),
     },
     palavras_chaves: ["química orgânica", "avanços", "pesquisa"],
     curso: "Química",
@@ -184,7 +199,7 @@ const vet = [
     titulo: "Avanços em Química Orgânica",
     periodoDeExecucao: {
       inicio: new Date(2022, 1, 1),
-      fim: new Date(2022, 7, 31),
+      fim: new Date(2023, 12, 31),
     },
     palavras_chaves: ["química orgânica", "avanços", "pesquisa"],
     curso: "Química",
@@ -196,57 +211,6 @@ const vet = [
   },
   // Adicione mais elementos conforme necessário...
 ];
-
-const ObjetoCard = ({ objeto }) => {
-  return (
-    <div className="card" style={styles.card}>
-      <h3 style={styles.titleCard}>{objeto.titulo}</h3>
-      <p style={styles.text}>Autor: {objeto.autor}</p>
-      <p style={styles.text}>Orientador: {objeto.orientador}</p>
-      <p style={styles.text}>Curso: {objeto.curso}</p>
-      <p style={styles.text}>Data de Início: {objeto.periodoDeExecucao.inicio.toLocaleDateString()}</p>
-      <p style={styles.text}>Data de Encerramento: {objeto.periodoDeExecucao.fim.toLocaleDateString()}</p>
-      <p style={styles.text}>Status: {objeto.status}</p>
-      <p style={styles.text}>Tipo: {objeto.tipo}</p>
-      <p style={styles.text}>Palavras-Chave: {objeto.palavras_chaves.join(', ')}</p>
-      <p style={styles.text}> <a href={objeto.conteudo.url} target='_blank'>Link</a></p>
-    </div>
-  );
-};
-
-const OverviewTela = ({ arrayDeObjetos, itensPorPagina }) => {
-  const [paginaAtual, setPaginaAtual] = useState(1);
-  const totalPaginas = Math.ceil(arrayDeObjetos.length / itensPorPagina);
-
-  const handlePaginaClicada = (numeroPagina) => {
-    setPaginaAtual(numeroPagina);
-  };
-
-  const objetosNaPagina = arrayDeObjetos.slice((paginaAtual - 1) * itensPorPagina, paginaAtual * itensPorPagina);
-
-  const paginationItems = [];
-  for (let number = 1; number <= totalPaginas; number++) {
-    paginationItems.push(
-      <Pagination.Item key={number} active={number === paginaAtual} onClick={() => handlePaginaClicada(number)}>
-        {number}
-      </Pagination.Item>,
-    );
-  }
-
-  return (
-    <div  style={styles.container}>
-      <h1 style={styles.title}>Visão Geral</h1>
-      <div className="cards-container" style={styles.cardContainer}>
-        {objetosNaPagina.map((objeto, index) => (
-          <ObjetoCard key={index} objeto={objeto} />
-        ))}
-      </div>
-      <div style={styles.paginacao}>
-        <Pagination>{paginationItems}</Pagination>
-      </div>
-    </div>
-  );
-};
 
 const styles = {
   container: {
@@ -305,15 +269,129 @@ const styles = {
   },
 };
 
+const Filtro = ({ onEnterPressed, onSelectChange }) => {
+  const handleKeyDown = (ev) => {
+    if (ev.key === 'Enter') {
+      onEnterPressed(ev.target.value);
+    }
+  };
+
+  return (
+    <div>
+      <div style={{
+        textAlign: "center",
+        margin: '16px'
+      }}>
+        <select onChange={(ev) => onSelectChange(ev.target.value)}>
+          <option value="autor">Autor</option>
+          <option value="titulo">Título</option>
+          <option value="curso">Curso</option>
+          <option value="status">Status</option>
+          <option value="orientador">Orientador</option>
+          <option value="palavras_chaves">Palavras-Chave</option>
+        </select>
+        <input
+          type="text"
+          placeholder="Pressione ENTER para filtrar"
+          onKeyDown={handleKeyDown}
+        />
+      </div>
+    </div>
+  );
+};
+
 function Listagem() {
 
-  const arrayDeObjetos = vet;
+  const [filtro, setFiltro] = useState("");
+  const [filtroPor, setFiltroPor] = useState("autor");
+
+  const refinofiltrado = vet
+  ? vet.filter((item) => {
+      const campoFiltrado = item[filtroPor];
+      return String(campoFiltrado).toLowerCase().includes(filtro.toLowerCase());
+    })
+  : [];
+
+
+  const handleEnterPressed = (valor) => {
+    setFiltro(valor);
+  };
+
+  const handleSelectChange = (opcao) => {
+    setFiltroPor(opcao);
+  };
+
+  const ObjetoCard = ({ objeto }) => {
+    return (
+      <div style={styles.card}>
+        <h3 style={styles.titleCard}>{objeto.titulo}</h3>
+        <p style={styles.text}>Autor: {objeto.autor}</p>
+        <p style={styles.text}>Orientador: {objeto.orientador}</p>
+        <p style={styles.text}>Curso: {objeto.curso}</p>
+        <p style={styles.text}>Data de Início: {objeto.periodoDeExecucao.inicio.toLocaleDateString()}</p>
+        <p style={styles.text}>Data de Encerramento: {objeto.periodoDeExecucao.fim.toLocaleDateString()}</p>
+        <p style={styles.text}>Status: {objeto.status}</p>
+        <p style={styles.text}>Tipo: {objeto.tipo}</p>
+        <p style={styles.text}>Palavras-Chave: {objeto.palavras_chaves.join(', ')}</p>
+        <p style={styles.text}> <a href={objeto.conteudo.url} target='_blank'>Link</a></p>
+      </div>
+    );
+  };
+
+  const FiltroComponent = (props) => {
+    const { title } = props;
+    return (
+    <div>
+      <h4>{title}</h4>
+      <Filtro onEnterPressed={handleEnterPressed} onSelectChange={handleSelectChange} />
+    </div>);
+  };
+
+  const OverviewTela = ({ arrayDeObjetos, itensPorPagina }) => {
+    const [paginaAtual, setPaginaAtual] = useState(1);
+    const totalPaginas = Math.ceil(arrayDeObjetos.length / itensPorPagina);
+
+    const handlePaginaClicada = (numeroPagina) => {
+      setPaginaAtual(numeroPagina);
+    };
+
+    const objetosNaPagina = arrayDeObjetos.slice((paginaAtual - 1) * itensPorPagina, paginaAtual * itensPorPagina);
+
+    const paginacaoItems = [];
+
+    for (let number = 1; number <= totalPaginas; number++) {
+      paginacaoItems.push(
+        <Pagination.Item key={number} active={number === paginaAtual} onClick={() => handlePaginaClicada(number)}>
+          {number}
+        </Pagination.Item>,
+      );
+    }
+
+    return (
+      <div style={styles.container}>
+        <h1 style={styles.title}>Visão Geral</h1>
+
+        <FiltroComponent title="Filtro" />
+
+        <div className="cards-container" style={styles.cardContainer}>
+          {objetosNaPagina.map((objeto, index) => (
+            <ObjetoCard key={index} objeto={objeto} />
+          ))}
+        </div>
+        <div style={styles.paginacao}>
+          <Pagination>{paginacaoItems}</Pagination>
+        </div>
+      </div>
+    );
+  };
+
+  //const arrayDeObjetos = vet;
 
   const itensPorPagina = 4;
 
   return (
     <div style={styles.container}>
-      <OverviewTela arrayDeObjetos={arrayDeObjetos} itensPorPagina={itensPorPagina} />
+      <OverviewTela arrayDeObjetos={refinofiltrado} itensPorPagina={itensPorPagina} />
     </div>
   );
 
