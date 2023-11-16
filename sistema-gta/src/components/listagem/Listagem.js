@@ -285,7 +285,7 @@ const Filtro = ({ onEnterPressed, onSelectChange }) => {
         <select style={{
           textAlign: "center",
           margin: '10px'
-        }}> onChange={(ev) => onSelectChange(ev.target.value)}>
+        }} onChange={(ev) => onSelectChange(ev.target.value)}>
           <option value="autor">Autor</option>
           <option value="titulo">Título</option>
           <option value="curso">Curso</option>
