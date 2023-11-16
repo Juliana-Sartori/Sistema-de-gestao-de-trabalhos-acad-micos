@@ -251,7 +251,7 @@ const styles = {
     fontWeight: '700',
     display: 'flex',
     alignItems: 'center',
-    gap: '50vh'
+    //gap: '50vh'
   },
   titleCard: {
     // fontFamily: 'Arial Black, sans-serif',
