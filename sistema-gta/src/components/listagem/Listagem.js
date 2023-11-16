@@ -1,6 +1,6 @@
-import React, { useState } from "react";
-import Pagination from "react-bootstrap/Pagination";
-import "bootstrap/dist/css/bootstrap.min.css";
+import React, { useState } from 'react';
+import Pagination from 'react-bootstrap/Pagination';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const vet = [
   {
@@ -18,8 +18,7 @@ const vet = [
     conteudo: {
       url: "https://www.worldwildlife.org/",
     },
-  },
-  {
+  }, {
     autor: "Fulano de Tal",
     orientador: "Professor de tal Matéria",
     titulo: "Uma Coisa Muito Chata",
@@ -178,8 +177,7 @@ const vet = [
     conteudo: {
       url: "https://pubs.acs.org/journal/joceah",
     },
-  },
-  {
+  }, {
     autor: "Juliana Oliveira",
     orientador: "Professor de Biologia",
     titulo: "Impacto Ambiental",
@@ -217,76 +215,77 @@ const vet = [
 const styles = {
   container: {
     //fontFamily: 'Arial, sans-serif',
-    textAlign: "center",
-    backgroundColor: "#c8d5ec",
-    color: "black",
+    textAlign: 'center',
+    backgroundColor: '#c8d5ec',
+    color: 'black',
     //margin: 'auto',
     fontFamily: "Poppins",
     //padding: '20px', // Adicione padding para afastar do limite da tela
   },
   cardContainer: {
-    display: "flex",
-    flexWrap: "wrap",
-    justifyContent: "center",
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
   },
   card: {
-    border: "2px solid blue",
-    borderRadius: "8px",
-    padding: "16px",
-    margin: "16px",
-    width: "300px",
-    height: "450px",
-    backgroundColor: "#c8d5ec",
-    boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
+    border: '2px solid blue',
+    borderRadius: '8px',
+    padding: '16px',
+    margin: '40px',
+    width: '300px',
+    height: '450px',
+    backgroundColor: '#c8d5ec',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
   },
   title: {
     // fontFamily: 'Arial Black, sans-serif',
-    color: "white",
+    color: 'white',
     // fontSize: '1.5em',
-    margin: "auto",
-    paddingLeft: "100px",
-    fontSize: "35px",
-    backgroundColor: "#404e82",
-    width: "211vh",
+    margin: 'auto',
+    paddingLeft: '100px',
+    fontSize: '35px',
+    backgroundColor: '#404e82',
+    width: '211vh',
     fontFamily: "Poppins",
-    fontStyle: "normal",
-    fontWeight: "700",
-    display: "flex",
-    alignItems: "center",
+    fontStyle: 'normal',
+    fontWeight: '700',
+    display: 'flex',
+    alignItems: 'center',
     //gap: '50vh'
   },
   titleCard: {
     // fontFamily: 'Arial Black, sans-serif',
     fontFamily: "Poppins",
     //color: 'black',
-    fontSize: "1.5em",
+    fontSize: '1.5em',
   },
   text: {
-    color: "black",
+    color: 'black',
   },
   paginacao: {
-    marginTop: "20px",
-    display: "flex",
-    justifyContent: "center",
+    marginTop: '20px',
+    display: 'flex',
+    justifyContent: 'center',
   },
 };
 
 const Filtro = ({ onEnterPressed, onSelectChange }) => {
   const handleKeyDown = (ev) => {
-    if (ev.key === "Enter") {
+    if (ev.key === 'Enter') {
       onEnterPressed(ev.target.value);
     }
   };
 
   return (
     <div>
-      <div
-        style={{
+      <div style={{
+        textAlign: "center",
+        margin: '1px'
+      }}>
+        <select style={{
           textAlign: "center",
-          margin: "16px",
-        }}
-      >
-        <select onChange={(ev) => onSelectChange(ev.target.value)}>
+          margin: '10px'
+        }} onChange={(ev) => onSelectChange(ev.target.value)}>
           <option value="autor">Autor</option>
           <option value="titulo">Título</option>
           <option value="curso">Curso</option>
@@ -305,17 +304,17 @@ const Filtro = ({ onEnterPressed, onSelectChange }) => {
 };
 
 function Listagem() {
+
   const [filtro, setFiltro] = useState("");
   const [filtroPor, setFiltroPor] = useState("autor");
 
   const refinofiltrado = vet
     ? vet.filter((item) => {
-        const campoFiltrado = item[filtroPor];
-        return String(campoFiltrado)
-          .toLowerCase()
-          .includes(filtro.toLowerCase());
-      })
+      const campoFiltrado = item[filtroPor];
+      return String(campoFiltrado).toLowerCase().includes(filtro.toLowerCase());
+    })
     : [];
+
 
   const handleEnterPressed = (valor) => {
     setFiltro(valor);
@@ -332,24 +331,12 @@ function Listagem() {
         <p style={styles.text}>Autor: {objeto.autor}</p>
         <p style={styles.text}>Orientador: {objeto.orientador}</p>
         <p style={styles.text}>Curso: {objeto.curso}</p>
-        <p style={styles.text}>
-          Data de Início: {objeto.periodoDeExecucao.inicio.toLocaleDateString()}
-        </p>
-        <p style={styles.text}>
-          Data de Encerramento:{" "}
-          {objeto.periodoDeExecucao.fim.toLocaleDateString()}
-        </p>
+        <p style={styles.text}>Data de Início: {objeto.periodoDeExecucao.inicio.toLocaleDateString()}</p>
+        <p style={styles.text}>Data de Encerramento: {objeto.periodoDeExecucao.fim.toLocaleDateString()}</p>
         <p style={styles.text}>Status: {objeto.status}</p>
         <p style={styles.text}>Tipo: {objeto.tipo}</p>
-        <p style={styles.text}>
-          Palavras-Chave: {objeto.palavras_chaves.join(", ")}
-        </p>
-        <p style={styles.text}>
-          {" "}
-          <a href={objeto.conteudo.url} target="_blank">
-            Link
-          </a>
-        </p>
+        <p style={styles.text}>Palavras-Chave: {objeto.palavras_chaves.join(', ')}</p>
+        <p style={styles.text}> <a href={objeto.conteudo.url} target='_blank'>Link</a></p>
       </div>
     );
   };
@@ -359,12 +346,8 @@ function Listagem() {
     return (
       <div>
         <h4>{title}</h4>
-        <Filtro
-          onEnterPressed={handleEnterPressed}
-          onSelectChange={handleSelectChange}
-        />
-      </div>
-    );
+        <Filtro onEnterPressed={handleEnterPressed} onSelectChange={handleSelectChange} />
+      </div>);
   };
 
   const OverviewTela = ({ arrayDeObjetos, itensPorPagina }) => {
@@ -375,28 +358,21 @@ function Listagem() {
       setPaginaAtual(numeroPagina);
     };
 
-    const objetosNaPagina = arrayDeObjetos.slice(
-      (paginaAtual - 1) * itensPorPagina,
-      paginaAtual * itensPorPagina
-    );
+    const objetosNaPagina = arrayDeObjetos.slice((paginaAtual - 1) * itensPorPagina, paginaAtual * itensPorPagina);
 
     const paginacaoItems = [];
 
     for (let number = 1; number <= totalPaginas; number++) {
       paginacaoItems.push(
-        <Pagination.Item
-          key={number}
-          active={number === paginaAtual}
-          onClick={() => handlePaginaClicada(number)}
-        >
+        <Pagination.Item key={number} active={number === paginaAtual} onClick={() => handlePaginaClicada(number)}>
           {number}
-        </Pagination.Item>
+        </Pagination.Item>,
       );
     }
 
     return (
       <div style={styles.container}>
-        <h1 style={styles.title}>Visão Geral</h1>
+        <h1 style={styles.title}>Listagem</h1>
 
         <FiltroComponent title="Filtro" />
 
@@ -414,16 +390,15 @@ function Listagem() {
 
   //const arrayDeObjetos = vet;
 
-  const itensPorPagina = 4;
+  const itensPorPagina = 6;
 
   return (
     <div style={styles.container}>
-      <OverviewTela
-        arrayDeObjetos={refinofiltrado}
-        itensPorPagina={itensPorPagina}
-      />
+      <OverviewTela arrayDeObjetos={refinofiltrado} itensPorPagina={itensPorPagina} />
     </div>
   );
+
 }
+
 
 export default Listagem;
