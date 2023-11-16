@@ -1,10 +1,18 @@
 import "./styles.css";
+import { useNavigate } from "react-router-dom";
+
 
 const Evento = (props) => {
-  const meuEvento = () => {
-    console.log("ativado");
-  };
   const { click } = props;
+  const navigate = useNavigate()
+  
+  const meuEvento = () => {
+    if (click == "Listagem") {
+      
+      navigate("/listagem")
+    }
+  };
+  
   return (
     <div className="botao">
       <button onClick={meuEvento}>{click}</button>

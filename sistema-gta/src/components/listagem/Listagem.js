@@ -231,7 +231,7 @@ const styles = {
     border: '2px solid blue',
     borderRadius: '8px',
     padding: '16px',
-    margin: '16px',
+    margin: '40px',
     width: '300px',
     height: '450px',
     backgroundColor: '#c8d5ec',
@@ -280,9 +280,12 @@ const Filtro = ({ onEnterPressed, onSelectChange }) => {
     <div>
       <div style={{
         textAlign: "center",
-        margin: '16px'
+        margin: '1px'
       }}>
-        <select onChange={(ev) => onSelectChange(ev.target.value)}>
+        <select style={{
+          textAlign: "center",
+          margin: '10px'
+        }}> onChange={(ev) => onSelectChange(ev.target.value)}>
           <option value="autor">Autor</option>
           <option value="titulo">Título</option>
           <option value="curso">Curso</option>
@@ -306,11 +309,11 @@ function Listagem() {
   const [filtroPor, setFiltroPor] = useState("autor");
 
   const refinofiltrado = vet
-  ? vet.filter((item) => {
+    ? vet.filter((item) => {
       const campoFiltrado = item[filtroPor];
       return String(campoFiltrado).toLowerCase().includes(filtro.toLowerCase());
     })
-  : [];
+    : [];
 
 
   const handleEnterPressed = (valor) => {
@@ -341,10 +344,10 @@ function Listagem() {
   const FiltroComponent = (props) => {
     const { title } = props;
     return (
-    <div>
-      <h4>{title}</h4>
-      <Filtro onEnterPressed={handleEnterPressed} onSelectChange={handleSelectChange} />
-    </div>);
+      <div>
+        <h4>{title}</h4>
+        <Filtro onEnterPressed={handleEnterPressed} onSelectChange={handleSelectChange} />
+      </div>);
   };
 
   const OverviewTela = ({ arrayDeObjetos, itensPorPagina }) => {
@@ -369,7 +372,7 @@ function Listagem() {
 
     return (
       <div style={styles.container}>
-        <h1 style={styles.title}>Visão Geral</h1>
+        <h1 style={styles.title}>Listagem</h1>
 
         <FiltroComponent title="Filtro" />
 
@@ -387,7 +390,7 @@ function Listagem() {
 
   //const arrayDeObjetos = vet;
 
-  const itensPorPagina = 4;
+  const itensPorPagina = 6;
 
   return (
     <div style={styles.container}>
