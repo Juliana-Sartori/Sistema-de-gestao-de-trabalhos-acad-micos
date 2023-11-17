@@ -3,8 +3,11 @@ import "./App.css";
 import Listagem from "./components/listagem/Listagem.js";
 import Cadastro from "./components/cadastro/cadastro.js";
 import { BrowserRouter, Route, Link, Routes } from "react-router-dom";
+import { Trabalhos } from "./data.js";
 
 function App() {
+  window.localStorage.setItem('trabalhos', JSON.stringify(Trabalhos))
+
   return (
     // <div className="App" style={styles}>
     <div className="App">

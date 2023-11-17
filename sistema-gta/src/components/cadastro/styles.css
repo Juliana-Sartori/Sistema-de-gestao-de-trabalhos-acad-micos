@@ -28,3 +28,33 @@
   padding-left: 110vh;
   padding-top: 20px;
 }
+
+.dado {
+  margin-top: 10px;
+  margin-left: 80px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: baseline;
+  color: #1e1e1e;
+}
+
+.dado h3 {
+  width: 500px;
+  height: 30px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+  padding-top: 20px;
+}
+
+.dado input {
+  width: 500px;
+  height: 30px;
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 27px;
+}
